@@ -438,6 +438,10 @@ MetaScene::M_SetupWriteFields()
 
   MET_FieldRecordType * mF;
 
+  mF = new MET_FieldRecordType;
+  MET_InitWriteField(mF, "ObjectType", MET_STRING, strlen(m_ObjectTypeName), m_ObjectTypeName);
+  m_Fields.push_back(mF);
+
   if (m_FileFormatVersion > 0)
   {
     mF = new MET_FieldRecordType;
@@ -451,10 +455,6 @@ MetaScene::M_SetupWriteFields()
     MET_InitWriteField(mF, "Comment", MET_STRING, strlen(m_Comment), m_Comment);
     m_Fields.push_back(mF);
   }
-
-  mF = new MET_FieldRecordType;
-  MET_InitWriteField(mF, "ObjectType", MET_STRING, strlen(m_ObjectTypeName), m_ObjectTypeName);
-  m_Fields.push_back(mF);
 
   mF = new MET_FieldRecordType;
   MET_InitWriteField(mF, "NDims", MET_INT, m_NDims);
